@@ -86,8 +86,9 @@ export default function HoroscopeDetail({
             </div>
           ) : (
             <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 10, filter: 'blur(8px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
               className="text-xl md:text-2xl text-zinc-800 dark:text-zinc-200 font-serif italic leading-relaxed"
             >
               "{horoscope}"
