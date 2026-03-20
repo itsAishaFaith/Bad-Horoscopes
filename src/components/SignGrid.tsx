@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { ZODIAC_SIGNS, ZodiacSign } from '../types';
+import Logo from './Logo';
 
 interface SignGridProps {
   onSelectSign: (sign: ZodiacSign) => void;
@@ -9,9 +10,10 @@ interface SignGridProps {
 export default function SignGrid({ onSelectSign }: SignGridProps) {
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-8">
-      <div className="text-center mb-12">
+      <div className="text-center mb-12 flex flex-col items-center">
+        <Logo className="w-24 h-24 mb-6" />
         <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-zinc-900 dark:text-zinc-50 mb-4">
-          BAD HOROSCOPES
+          PETTY FATE
         </h1>
         <p className="text-zinc-500 dark:text-zinc-400 font-medium max-w-md mx-auto">
           Select your sign to discover today's minor inconvenience.

@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { ZodiacSign } from '../types';
 import { ArrowLeft, RefreshCw, Download } from 'lucide-react';
 import { toPng } from 'html-to-image';
+import Logo from './Logo';
 
 interface HoroscopeDetailProps {
   sign: ZodiacSign;
@@ -35,7 +36,7 @@ export default function HoroscopeDetail({
         pixelRatio: 2,
       });
       const link = document.createElement('a');
-      link.download = `bad-horoscope-${sign.name.toLowerCase()}.png`;
+      link.download = `petty-fate-${sign.name.toLowerCase()}.png`;
       link.href = dataUrl;
       link.click();
     } catch (err) {
@@ -143,8 +144,11 @@ export default function HoroscopeDetail({
           <p className="text-4xl text-zinc-800 dark:text-zinc-200 font-serif italic leading-relaxed max-w-3xl px-8">
             "{horoscope}"
           </p>
-          <div className="absolute bottom-16 text-zinc-400 dark:text-zinc-600 font-mono text-xl tracking-widest">
-            BAD HOROSCOPES
+          <div className="absolute bottom-16 flex flex-col items-center gap-4 text-zinc-400 dark:text-zinc-600">
+            <Logo className="w-16 h-16" />
+            <div className="font-mono text-xl tracking-widest font-bold">
+              @PettyFate
+            </div>
           </div>
         </div>
       </div>
