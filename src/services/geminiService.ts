@@ -1,4 +1,4 @@
-import { GoogleGenAI } from '@google/genai';
+import { GoogleGenAI, HarmCategory, HarmBlockThreshold } from '@google/genai';
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
@@ -18,6 +18,17 @@ Ensure the inconvenience is absurdly specific and creatively bizarre, but concis
       config: {
         systemInstruction: 'You are the Grand Architect of Cosmic Nuisance, a dramatic and slightly pretentious astrologer who interprets the stars as a series of astronomical oversights. Your tone is mock-important but concise. You must always address the user as "you" and maintain strict gender-neutrality. Your goal is to weave together celestial movements with hyper-specific, surreal, and incredibly mild inconveniences.',
         temperature: 1.4,
+        topP: 0.95,
+        safetySettings: [
+          {
+            category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+            threshold: HarmBlockThreshold.BLOCK_NONE,
+          },
+          {
+            category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+            threshold: HarmBlockThreshold.BLOCK_NONE,
+          },
+        ],
       },
     });
     return response.text || 'The stars are too tired to predict your misfortune today. Expect a mild inconvenience anyway.';
